@@ -1,4 +1,5 @@
 <!--pages/classic/classic.wxml-->
 <view>
-  <like-cmp like="{{classic.like_status}}" count="{{classic.fav_nums}}"></like-cmp>
+  <like-cmp like="{{classic.like_status}}" count="{{classic.fav_nums}}"/>
+  <movie-cmp img="{{classic.image}}" content="{{classic.content}}" />
 </view>
