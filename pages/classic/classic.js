@@ -1,6 +1,8 @@
 // pages/classic/classic.js
-import ClassicModel from '../../models/classic.js'
-let classic = new ClassicModel()
+import ClassicModel from '../../models/classic-model.js'
+import LikeModel from '../../models/like-model.js'
+let classicModel = new ClassicModel()
+let likeModel = new LikeModel()
 
 Page({
 
@@ -8,6 +10,8 @@ Page({
    * 页面的初始数据
    */
   data: {
+    latest: true,
+    first: false,
     classic: {}
   },
 
@@ -15,7 +19,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    classic.getLatest((res) => {
+    classicModel.getLatest((res) => {
       this.setData({
         classic: res
       })
@@ -69,5 +73,18 @@ Page({
    */
   onShareAppMessage: function () {
   
+  },
+
+  onLike(event) {
+    let behavior = event.detail.behavior
+    likeModel.like(behavior, this.data.classic.id, this.data.classic.type)
+  },
+
+  onNext(event) {
+    console.log(event)
+  },
+
+  onPrev(event) {
+    console.log(event)
   }
 })

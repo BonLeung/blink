@@ -1,15 +1,10 @@
-// components/classic/movie/index.js
-import classicBahavior from '../classic-bahavior.js'
-
+// components/classic/essay/index.js
 Component({
-
-  behaviors: [classicBahavior],
-
   /**
    * 组件的属性列表
    */
   properties: {
-    
+
   },
 
   /**

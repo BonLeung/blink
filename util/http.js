@@ -19,6 +19,7 @@ class HTTP {
     
     wx.request({
       url: url,
+      method: method,
       header: {
         'content-type': 'application/json',
         'appkey': config.appkey
@@ -27,7 +28,7 @@ class HTTP {
       success: res => {
         let code = res.statusCode + ''
         if (code.startsWith('2')) {
-          params.success(res.data)
+          params.success && params.success(res.data)
         } else {
           let errorCode = res.data.error_code
           this._showError(errorCode)

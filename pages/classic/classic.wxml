@@ -1,5 +1,9 @@
 <!--pages/classic/classic.wxml-->
-<view>
-  <like-cmp like="{{classic.like_status}}" count="{{classic.fav_nums}}"/>
+<view class='container'>
+  <view class='header'>
+    <episode-cmp class="episode" index="{{classic.index}}" />
+    <like-cmp class="like" bind:like="onLike" like="{{classic.like_status}}" count="{{classic.fav_nums}}"/>
+  </view>
   <movie-cmp img="{{classic.image}}" content="{{classic.content}}" />
+  <navi-cmp bind:left="onNext" bind:right="onPrev" class="navi" title="{{classic.title}}" latest="{{latest}}" first="{{first}}" />
 </view>
