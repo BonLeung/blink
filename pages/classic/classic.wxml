@@ -2,8 +2,20 @@
 <view class='container'>
   <view class='header'>
     <episode-cmp class="episode" index="{{classic.index}}" />
-    <like-cmp class="like" bind:like="onLike" like="{{classic.like_status}}" count="{{classic.fav_nums}}"/>
+    <like-cmp class="like" bind:like="onLike" like="{{likeStatus}}" count="{{likeCount}}"/>
   </view>
-  <movie-cmp img="{{classic.image}}" content="{{classic.content}}" />
+  <movie-cmp 
+    hidden="{{classic.type != 100}}" 
+    img="{{classic.image}}" 
+    content="{{classic.content}}" />
+  <music-cmp 
+    hidden="{{classic.type != 200}}" 
+    src="{{classic.url}}"
+    img="{{classic.image}}" 
+    content="{{classic.content}}" />
+  <essay-cmp 
+    hidden="{{classic.type != 300}}" 
+    img="{{classic.image}}" 
+    content="{{classic.content}}" />
   <navi-cmp bind:left="onNext" bind:right="onPrev" class="navi" title="{{classic.title}}" latest="{{latest}}" first="{{first}}" />
 </view>
