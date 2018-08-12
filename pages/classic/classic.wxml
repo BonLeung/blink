@@ -9,9 +9,10 @@
     img="{{classic.image}}" 
     content="{{classic.content}}" />
   <music-cmp 
-    hidden="{{classic.type != 200}}" 
+    wx:if="{{classic.type == 200}}" 
     src="{{classic.url}}"
     img="{{classic.image}}" 
+    title="{{classic.title}}"
     content="{{classic.content}}" />
   <essay-cmp 
     hidden="{{classic.type != 300}}" 

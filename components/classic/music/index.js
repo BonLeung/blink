@@ -11,7 +11,8 @@ Component({
    * 组件的属性列表
    */
   properties: {
-    src: String
+    src: String,
+    title: String
   },
 
   /**
@@ -23,8 +24,13 @@ Component({
     pauseSrc: 'images/player@pause.png'
   },
 
+  attached() {
+    this._recoverStatus()
+    this._monitorSwitch()
+  },  
+
   detached() {
-    BAM.pause()
+    
   },
 
   /**
@@ -37,12 +43,42 @@ Component({
           playing: true
         })
         BAM.src = this.properties.src
+        BAM.title = this.properties.title
       } else {
         this.setData({
           playing: false
         })
         BAM.pause()
       }
+    },
+
+    _recoverStatus() {
+      if (BAM.paused) {
+        this.setData({
+          playing: false
+        })
+        return
+      }
+      if (BAM.src === this.properties.src) {
+        this.setData({
+          playing: true
+        })
+      }
+    },
+
+    _monitorSwitch() {
+      BAM.onPause(() => {
+        this._recoverStatus()
+      })
+      BAM.onPlay(() => {
+        this._recoverStatus()
+      })
+      BAM.onStop(() => {
+        this._recoverStatus()
+      })
+      BAM.onEnded(() => {
+        this._recoverStatus()
+      })
     }
   }
 })

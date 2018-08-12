@@ -1,6 +1,6 @@
 <!--components/classic/music/index.wxml-->
-<view class='container' hidden='{{hidden}}'>
-  <image class='classic-img' src='{{img}}' />
+<view class='container'>
+  <image class='classic-img {{playing ? "rotation" : ""}}' src='{{img}}' />
   <image 
     class='player-img' 
     src='{{playing ? pauseSrc : playSrc}}'
